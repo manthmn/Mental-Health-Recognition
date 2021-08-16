@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta id="my-data" data-name="{{score}}" data-other="{{other}}">
+
+    <title>VIKKA ROBOT</title>
+    
+    <!-- style.css -->
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style1.css') }}">
+</head>
+<body>
+    <div class="wrapper">
+        <div>
+           <!-- <i class="fas fa-award award_icon"></i> -->
+           <h3 class="username">Thank You For taking the Tests  <span class="name"></span></h3>
+           <p class="userpoints">Your Points For Set 1 -> <span class="points" id = "set1"></span></p>
+           <p class="userpoints">Your Points For Set 2  -> <span class="points2" id = "set2"></span></p>
+           <p class="userpoints">Your Points For Set 3  -> <span class="points3" id = "set3"></span></p>
+           <!-- <p class="userpoints">Percentage Deviation From Normal -> {{final_score}}% <span class="points3"></span></p> -->
+           <p class="usertime"> Time taken <span class="time_taken">sec</span></p><br>
+           <img src= "{{graph_lst[0]}}" alt="Set 1" width="1000" height="600"><br>
+            <img src= "{{graph_lst[1]}}" alt="Set 2" width="1000" height="600"><br>
+            <img src= "{{graph_lst[2]}}" alt="Set 3" width="1000" height="600"><br><br><br>
+
+            <h1 class="userpoints" id = "response">Your Analysis For Test -> </h1><br><br>
+        </div>
+    </div>
+    <script src="https://kit.fontawesome.com/d56261bbb9.js"></script>
+
+
+    <!-- user info -->
+    <script src="{{url_for('static', filename='userInfo.js')}}"></script>
+    <script>
+        window.onload = function(){
+            let points = (((parseInt(document.getElementById("set1").innerHTML) + parseInt(document.getElementById("set2").innerHTML))*100)/54 + (parseInt(document.getElementById("set3").innerHTML) * 10))/3;
+            var ghraph_score = parseFloat("{{score}}");//$('#my-data').data();
+            points = Math.round(points*(0.27))
+            console.log(points, ghraph_score);
+            //first five
+            if((points>=0 && points<=4) && ghraph_score>=0 && ghraph_score<2){
+                document.getElementById("response").innerHTML = "Good, You are Mentally Healthy";
+            }
+            else if((points>=0 && points<=4) && ghraph_score>=2 && ghraph_score<4){
+                document.getElementById("response").innerHTML = "mild depressive symptoms, take care of Yourself";
+            }
+            else if((points>=0 && points<=4) && ghraph_score>=4 && ghraph_score<6){
+                document.getElementById("response").innerHTML = "need to see a doctor, moderate symptoms";
+            }
+            else if((points>=0 && points<=4) && ghraph_score>=6 && ghraph_score<8){
+                document.getElementById("response").innerHTML = "See a doctor as soon as possible moderately severe symptoms";
+            }
+            else if((points>=0 && points<=4) && ghraph_score>=8){
+                document.getElementById("response").innerHTML = "You Need to see a doctor, Emergency";
+            }
+            //second five
+            else if((points>4 && points<=9) && ghraph_score>=0 && ghraph_score<2){
+                document.getElementById("response").innerHTML = "Good, You are Mentally Healthy";
+            }
+            else if((points>4 && points<=9) && ghraph_score>=2 && ghraph_score<4){
+                document.getElementById("response").innerHTML = "mild depressive symptoms, take care of Yourself";
+            }
+            else if((points>4 && points<=9) && ghraph_score>=4 && ghraph_score<6){
+                document.getElementById("response").innerHTML = "need to see a doctor, moderate symptoms";
+            }
+            else if((points>4 && points<=9) && ghraph_score>=6 && ghraph_score<8){
+                document.getElementById("response").innerHTML = "See a doctor as soon as possible moderately severe symptoms";
+            }
+            else if((points>4 && points<=9) && ghraph_score>=8){
+                document.getElementById("response").innerHTML = "You Need to see a doctor, Emergency";
+            }
+            //third five
+            else if((points>9 && points<=14) && ghraph_score>=0 && ghraph_score<2){
+                document.getElementById("response").innerHTML = "mild depressive symptoms, take care of Yourself";
+            }
+            else if((points>9 && points<=14) && ghraph_score>=2 && ghraph_score<4){
+                document.getElementById("response").innerHTML = "mild depressive symptoms, take care of Yourself";
+            }
+            else if((points>9 && points<=14) && ghraph_score>=4 && ghraph_score<6){
+                document.getElementById("response").innerHTML = "need to see a doctor, moderate symptoms";
+            }
+            else if((points>9 && points<=14) && ghraph_score>=6 && ghraph_score<8){
+                document.getElementById("response").innerHTML = "See a doctor as soon as possible moderately severe symptoms";
+            }
+            else if((points>9 && points<=14) && ghraph_score>=8){
+                document.getElementById("response").innerHTML = "You Need to see a doctor, Emergency";
+            }
+            //forth five
+            else if((points>14 && points<=19) && ghraph_score>=0 && ghraph_score<2){
+                document.getElementById("response").innerHTML = "mild depressive symptoms, take care of Yourself";
+            }
+            else if((points>14 && points<=19) && ghraph_score>=2 && ghraph_score<4){
+                document.getElementById("response").innerHTML = "mild depressive symptoms, take care of Yourself";
+            }
+            else if((points>14 && points<=19) && ghraph_score>=4 && ghraph_score<6){
+                document.getElementById("response").innerHTML = "See a doctor as soon as possible moderately severe symptoms";
+            }
+            else if((points>14 && points<=19) && ghraph_score>=6 && ghraph_score<8){
+                document.getElementById("response").innerHTML = "See a doctor as soon as possible moderately severe symptoms";
+            }
+            else if((points>14 && points<=19) && ghraph_score>=8){
+                document.getElementById("response").innerHTML = "You Need to see a doctor, Emergency";
+            }
+            //fifth five
+            else if((points>19) && ghraph_score>=0 && ghraph_score<2){
+                document.getElementById("response").innerHTML = "You Need to see a doctor, Emergency";
+            }
+            else if((points>19) && ghraph_score>=2 && ghraph_score<4){
+                document.getElementById("response").innerHTML = "You Need to see a doctor, Emergency";
+            }
+            else if((points>19) && ghraph_score>=4 && ghraph_score<6){
+                document.getElementById("response").innerHTML = "You Need to see a doctor, Emergency";
+            }
+            else if((points>19) && ghraph_score>=6 && ghraph_score<8){
+                document.getElementById("response").innerHTML = "You Need to see a doctor, Emergency";
+            }
+            else if((points>19) && ghraph_score>=8){
+                document.getElementById("response").innerHTML = "You Need to see a doctor, Emergency";
+            }
+        }
+        
+    </script>
+
+</body>
+</html>

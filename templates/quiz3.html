@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Quiz Page</title>
+
+    <!-- style.css -->
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style1.css') }}">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type=text/javascript>
+            $(function() {
+              $('#b').click(function(e) {
+                e.preventDefault()
+                $.post('/takeimage',
+                    function() {
+                  //do nothing
+                });
+              });
+            });
+            
+    </script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <img id="image" style="margin-top:20px;" src="{{ url_for('video_feed') }}"> <br>
+      <div class="quiz">
+        <div class="quiz_header">
+          <div class="quiz_user">
+            <h4>Set2  <span class="name"></span></h4>
+          </div>
+          <div class="quiz_timer">
+            <span class="time">00:00</span>
+          </div>
+        </div>
+        <div class="quiz_body">
+          <div id="questions">
+          
+
+            <!-- <ul class="option_group">
+              <li class="option">option 1</li>
+              <li class="option">option 2</li>
+              <li class="option">option 3</li>
+              <li class="option">option 4</li>
+            </ul> -->
+          </div>
+
+          <button class="btn-next" id = "b" onclick="next()">Next Question</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- site.js -->
+    <script src="{{url_for('static', filename='site3.js')}}"></script>
+
+      <!-- user info -->
+      <script src="{{url_for('static', filename='userInfo.js')}}"></script>
+
+     <!-- timer -->
+     <script src="{{url_for('static', filename='timer.js')}}"></script>
+  </body>
+</html>
